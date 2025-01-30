@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2018 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="233.853mm" height="255.896mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 3892.86 4259.8"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:transparent}
+    .fil1 {fill:url(#id0);fill-rule:nonzero}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="751.71" y1="3437.23" x2="3141.15" y2="822.56">
+   <stop offset="0" style="stop-opacity:1; stop-color:#8A8A8A"/>
+   <stop offset="0.501961" style="stop-opacity:1; stop-color:#E8E8E8"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#8A8A8A"/>
+  </linearGradient>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0" x="0" y="0" width="3892.86" height="4259.8"/>
+  <path class="fil1" d="M3146.88 2070.76l188.18 -654.44c-175.18,-300 -272.1,-385.88 -397.14,-492.38 -133.45,-113.66 -343.34,-242.38 -637.91,-313.57l0 1460.39 -291.32 0 0 -1787.33c271.42,8.81 602.49,65.19 1007.63,340.85 253.83,172.71 513.53,493.62 619.69,762.4l-188.68 684.07 -300.46 0zm-2400.9 -2.39l-188.18 -654.44c175.18,-300 272.1,-385.88 397.14,-492.38 133.45,-113.66 343.34,-242.38 637.91,-313.57l0 1460.39 291.32 0 0 -1787.33c-271.42,8.81 -602.49,65.19 -1007.63,340.85 -253.83,172.71 -513.53,493.62 -619.69,762.4l188.68 684.07 300.46 0zm2400.9 123.05l188.18 654.44c-175.18,300 -272.1,385.88 -397.14,492.38 -133.45,113.66 -343.34,242.38 -637.91,313.57l0 -1460.39 -291.32 0 0 1787.33c271.42,-8.81 602.49,-65.19 1007.63,-340.85 253.83,-172.71 513.53,-493.62 619.69,-762.4l-188.68 -684.07 -300.46 0z"/>
+ </g>
+</svg>
