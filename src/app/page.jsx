@@ -1,6 +1,14 @@
+'use client'
+ 
+import { useProject } from '@/providers/project';
 import Image from "next/image";
 
 export default function Home() {
+  const { state, dispatch } = useProject();
+  const favoritedProjects = state.projects.filter(project => project.favorite);
+  console.log("ALL PROJECTS:", state.projects);
+  console.log("FAVORITED PROJECTS:", favoritedProjects);
+
   return (
     <div className="flex flex-col justify-items-center min-h-screen p-8 font-[family-name:var(--font-geist-sans)]">
       <main className="flex w-full grow">
