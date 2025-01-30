@@ -1,23 +1,12 @@
 "use client";
 
 import { useProject } from "@/providers/project";
-import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import FolderIcon from "@mui/icons-material/Folder";
+import FavoriteProjectItem from "@/components/FavoriteProjectItem";
 
-const StyledList = styled("div")(() => ({
+const StyledList = styled(List)(() => ({
   marginTop: "20px"
-}));
-
-const StyledItem = styled(ListItem)(() => ({
-  "borderBottom": "1px solid #eee",
-  "&:hover": {
-    background: "#eee"
-  }
 }));
 
 export default function FavoriteProjects() {
@@ -26,18 +15,9 @@ export default function FavoriteProjects() {
 
   return (
     <StyledList>
-      <List>
-        {favoritedProjects.map(project => (
-          <Link href={`/projects/${project.id}`} key={project.id}>
-            <StyledItem>
-              <ListItemIcon>
-                <FolderIcon />
-              </ListItemIcon>
-              <ListItemText primary={project.name} />
-            </StyledItem>
-          </Link>
-        ))}
-      </List>
+      {favoritedProjects.map(project => (
+        <FavoriteProjectItem project={project} />
+      ))}
     </StyledList>
   );
 }
