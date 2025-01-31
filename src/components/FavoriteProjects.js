@@ -16,7 +16,7 @@ export default function FavoriteProjects() {
   return (
     <StyledList>
       {favoritedProjects.map(project => (
-        <FavoriteProjectItem project={project} />
+        <FavoriteProjectItem project={project} key={project.id} />
       ))}
     </StyledList>
   );
