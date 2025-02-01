@@ -5,25 +5,24 @@ import { Skeleton, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import FavoriteButton from "@/components/FavoriteButton";
 
-const StyledHeadingGrid = styled(Grid)(() => ({
+const StyledHeadingGrid = styled(Grid)(({theme}) => ({
   alignItems: "flex-start",
   display: "flex",
   justifyContent: "flex-end",
-  marginBottom: "38px",
-  p: {
-    width: "50%"
+  [theme.breakpoints.down("lg")]: {
+    justifyContent: "flex-start"
   }
 }));
 
-export default function FormRow({ data, name, showFavoriteButton = false, favoriteStatus, leftColumn = 2, rightColumn = 10 }) {
+export default function FormRow({ data, name = "", showFavoriteButton = false, favoriteStatus, leftColumn = { xs: 12, lg: 4, xl: 3 }, rightColumn = { xs: 12, lg: 8, xl: 9 } }) {
   return (
     <>
-      <StyledHeadingGrid size={leftColumn}>{name}</StyledHeadingGrid>
-      <StyledHeadingGrid size={showFavoriteButton ? 5 : rightColumn} sx={{ justifyContent: "flex-start" }}>
-        <Typography>{data || <Skeleton height={24} animation="wave" />}</Typography>
-      </StyledHeadingGrid>
+      {!showFavoriteButton && (<StyledHeadingGrid size={leftColumn}><strong>{name}</strong>:</StyledHeadingGrid>)}
+      {!showFavoriteButton && (<StyledHeadingGrid size={rightColumn} sx={{ justifyContent: "flex-start" }}>
+        <Typography>{data || <Skeleton height={24} width={200} animation="wave" />}</Typography>
+      </StyledHeadingGrid>)}
       {showFavoriteButton && (
-        <StyledHeadingGrid size={5} sx={{ justifyContent: "flex-start" }}>
+        <StyledHeadingGrid size={{ xs: 12 }} sx={{ justifyContent: "flex-start" }}>
           {favoriteStatus ? <FavoriteButton favoriteStatus={favoriteStatus} projectId={data} /> : <Skeleton variant="circular" width={60} height={60} />}
         </StyledHeadingGrid>
       )}

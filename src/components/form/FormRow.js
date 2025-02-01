@@ -5,13 +5,27 @@ import { styled } from "@mui/material/styles";
 import { TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
-const StyledHeadingGrid = styled(Grid)(() => ({
+const StyledHeadingGrid = styled(Grid)(({ theme }) => ({
   alignItems: "center",
   display: "flex",
-  justifyContent: "flex-end"
+  flexWrap: "nowrap",
+  justifyContent: "flex-end",
+  [theme.breakpoints.down("lg")]: {
+    display: "none"
+  }
 }));
 
-export default function FormRow({ id, name, type = "text", rows = null, setFormData, formData, leftColumn = 2, rightColumn = 10, disabled }) {
+export default function FormRow({
+  id,
+  name,
+  type = "text",
+  rows = null,
+  setFormData,
+  formData,
+  leftColumn = { xs: 12, lg: 3, xl: 2 },
+  rightColumn = { xs: 12, lg: 9, xl: 10 },
+  disabled
+}) {
   const inputRef = useRef();
 
   const onHandleChange = e => {
@@ -22,7 +36,7 @@ export default function FormRow({ id, name, type = "text", rows = null, setFormD
 
   return (
     <>
-      <StyledHeadingGrid size={leftColumn}>{name}</StyledHeadingGrid>
+      <StyledHeadingGrid size={leftColumn}><strong>{name}</strong>:</StyledHeadingGrid>
       <Grid size={rightColumn}>
         <TextField
           inputRef={type === "date" ? inputRef : null}

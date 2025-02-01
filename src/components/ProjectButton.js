@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid2";
 
 export default function ProjectsTableHead() {
   return (
-    <Grid align="right" sx={{ mb: 4 }}>
+    <Grid align="right" sx={{ my: 4 }}>
       <Link href="/projects/new">
         <Button variant="contained">Create Project</Button>
       </Link>
