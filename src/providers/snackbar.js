@@ -25,7 +25,7 @@ export const SnackbarProvider = ({ children }) => {
           onClose={() => {
             setSnacks(prev => prev.filter(item => item.key !== snack.key));
           }}
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
         >
           <Alert
             onClose={() => {
