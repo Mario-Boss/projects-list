@@ -17,11 +17,11 @@ export default function ProjectsLayout({ children }) {
 
   return (
     <>
-      <div className="flex-none pr-8 w-auto border-r-2 border-silver">
+      <div className="lg:pr-8 mr-0 lg:mr-8 mb-8 lg:mb-0 w-full min-[1024px]:w-1/4 lg:border-r-2 border-silver">
         <PageTitle title="Favorite Projects" variant="h2" />
         <FavoriteProjects />
       </div>
-      <div className="grow pl-8">
+      <div className="grow w-full min-[1024px]:w-3/4">
         <PageTitle title={title} variant="h1" />
         {children}
       </div>
