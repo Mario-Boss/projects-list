@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useProject } from "@/providers/project";
+import { useSnackbar } from "@/providers/snackbar";
 import { Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import FormRow from "@/components/form/FormRow";
@@ -10,6 +11,7 @@ import FormRow from "@/components/form/FormRow";
 export default function Form({ formType, projectData = null }) {
   const router = useRouter();
   const { state, dispatch } = useProject();
+  const { addSnack } = useSnackbar();
   const [formData, setFormData] = useState({
     id: projectData?.id || "",
     name: projectData?.name || "",
@@ -23,9 +25,11 @@ export default function Form({ formType, projectData = null }) {
     switch (formType) {
       case "create":
         dispatch({ type: "add", project: { ...formData, favorite: false } });
+        addSnack("New project successfully added 🎉");
         break;
       case "update":
         dispatch({ type: "edit", project: { id: formData.id, data: formData } });
+        addSnack("New project successfully updated 👍");
         break;
     }
     router.push("/projects");
