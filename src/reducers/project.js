@@ -3,7 +3,8 @@ export const projectReducer = (state, action) => {
     case "add":
       return { projects: [...state.projects, action.project] };
     case "edit":
-      return { projects: state.projects.map(project => (project.id === action.projectId ? { ...project, ...action.project } : project)) };
+      delete action.project.data.id;
+      return { projects: state.projects.map(project => (project.id === action.project.id ? { ...project, ...action.project.data } : project)) };
     case "like":
       return { projects: state.projects.map(project => (project.id === action.projectId ? { ...project, favorite: true } : project)) };
     case "unlike":
