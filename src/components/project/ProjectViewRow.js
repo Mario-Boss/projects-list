@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import { Skeleton, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import FavoriteButton from "@/components/FavoriteButton";
 
@@ -20,11 +20,11 @@ export default function FormRow({ data, name, showFavoriteButton = false, favori
     <>
       <StyledHeadingGrid size={leftColumn}>{name}</StyledHeadingGrid>
       <StyledHeadingGrid size={showFavoriteButton ? 5 : rightColumn} sx={{ justifyContent: "flex-start" }}>
-        <Typography>{data}</Typography>
+        <Typography>{data || <Skeleton height={24} animation="wave" />}</Typography>
       </StyledHeadingGrid>
       {showFavoriteButton && (
         <StyledHeadingGrid size={5} sx={{ justifyContent: "flex-start" }}>
-          <FavoriteButton favoriteStatus={favoriteStatus} projectId={data} />
+          {favoriteStatus ? <FavoriteButton favoriteStatus={favoriteStatus} projectId={data} /> : <Skeleton variant="circular" width={60} height={60} />}
         </StyledHeadingGrid>
       )}
     </>
