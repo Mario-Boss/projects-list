@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { useProject } from "@/providers/project";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
-import { Button, IconButton, TableCell, TableRow } from "@mui/material";
-import { BookmarkAdd, BookmarkRemove } from "@mui/icons-material";
+import { Button, TableCell, TableRow } from "@mui/material";
+import FavoriteButton from "@/components/FavoriteButton";
 
 const StyledLink = styled(Link)(() => ({
   "& span:hover": {
@@ -21,18 +19,11 @@ const StyledButtonLink = styled(Link)(() => ({
 
 const ActionCell = styled(TableCell)(() => ({
   display: "flex",
-  justifyContent: "space-evenly"
+  justifyContent: "flex-end",
+  paddingRight: 0
 }));
 
 export default function ProjectsTableRow({ project }) {
-  const { state, dispatch } = useProject();
-  const [favorite, setFavorite] = useState(project.favorite);
-
-  const onFavoriteHandle = () => {
-    setFavorite(prevState => !prevState);
-    favorite ? dispatch({ type: "unlike", projectId: project.id }) : dispatch({ type: "like", projectId: project.id });
-  };
-
   return (
     <TableRow>
       <TableCell align="center">
@@ -40,17 +31,13 @@ export default function ProjectsTableRow({ project }) {
           <span>{project.id}</span>
         </StyledLink>
       </TableCell>
-      <TableCell align="center" component="th" scope="row">
-        {project.name}
-      </TableCell>
+      <TableCell align="center">{project.name}</TableCell>
       <TableCell align="right">{project.start}</TableCell>
       <TableCell align="right">{project.end}</TableCell>
       <TableCell align="center">{project.manager}</TableCell>
       <ActionCell>
-        <IconButton size="large" aria-label="favorite" onClick={onFavoriteHandle}>
-          {favorite ? <BookmarkRemove fontSize="large" color="secondary" /> : <BookmarkAdd fontSize="large" />}
-        </IconButton>
-        <StyledButtonLink href={`/projects/${project.id}`} passHref>
+        <FavoriteButton favoriteStatus={project.favorite} projectId={project.id} />
+        <StyledButtonLink href={`/projects/${project.id}/edit`} passHref>
           <Button variant="contained" aria-label="edit project">
             Edit
           </Button>
