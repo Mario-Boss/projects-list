@@ -36,7 +36,7 @@ export default function ProjectsTableRow({ project }) {
       <TableCell align="right">{project.end}</TableCell>
       <TableCell align="center">{project.manager}</TableCell>
       <ActionCell>
-        <FavoriteButton favoriteStatus={project.favorite} projectId={project.id} />
+        <FavoriteButton projectId={project.id} />
         <StyledButtonLink href={`/projects/${project.id}/edit`} passHref>
           <Button variant="contained" aria-label="edit project">
             Edit

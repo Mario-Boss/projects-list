@@ -23,7 +23,7 @@ export default function FormRow({ data, name = "", showFavoriteButton = false, f
       </StyledHeadingGrid>)}
       {showFavoriteButton && (
         <StyledHeadingGrid size={{ xs: 12 }} sx={{ justifyContent: "flex-start" }}>
-          {favoriteStatus ? <FavoriteButton favoriteStatus={favoriteStatus} projectId={data} /> : <Skeleton variant="circular" width={60} height={60} />}
+          {favoriteStatus ? <FavoriteButton projectId={data} /> : <Skeleton variant="circular" width={60} height={60} />}
         </StyledHeadingGrid>
       )}
     </>
