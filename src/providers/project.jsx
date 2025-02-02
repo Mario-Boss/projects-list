@@ -3,7 +3,7 @@
 import { createContext, use, useReducer } from "react";
 import { projectReducer } from "@/reducers/project";
 
-const ProjectContext = createContext(null);
+export const ProjectContext = createContext(null);
 
 export function ProjectProvider({ children, projectPromise }) {
   let initialProject = use(projectPromise);
