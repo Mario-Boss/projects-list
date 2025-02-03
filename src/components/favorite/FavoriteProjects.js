@@ -2,7 +2,7 @@
 
 import { useProject } from "@/providers/project";
 import { styled } from "@mui/material/styles";
-import List from "@mui/material/List";
+import { List, Typography } from "@mui/material";
 import FavoriteProjectItem from "@/components/favorite/FavoriteProjectItem";
 
 const StyledList = styled(List)(() => ({
@@ -15,6 +15,7 @@ export default function FavoriteProjects() {
 
   return (
     <StyledList>
+      {favoritedProjects.length === 0 && <Typography>You don't have any favorite projects yet.</Typography>}
       {favoritedProjects.map(project => (
         <FavoriteProjectItem project={project} key={project.id} />
       ))}
