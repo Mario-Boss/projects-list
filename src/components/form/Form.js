@@ -22,21 +22,26 @@ export default function Form({ formType, projectData = null }) {
   });
 
   const onHandleSubmit = formType => {
-    switch (formType) {
-      case "create":
-        dispatch({ type: "add", project: { ...formData, favorite: false } });
-        addSnack("New project successfully added 🎉");
-        break;
-      case "update":
-        dispatch({ type: "edit", project: { id: formData.id, data: formData } });
-        addSnack("New project successfully updated 👍");
-        break;
+    // added simple validation before sending the form - I would like to add Formik and validation schemam instead
+    if (!formData.id || !formData.name || !formData.desc || !formData.end || !formData.manager) {
+      addSnack("Please check the form and provide all required fields marked by * 👓", "warning");
+    } else {
+      switch (formType) {
+        case "create":
+          dispatch({ type: "add", project: { ...formData, favorite: false } });
+          addSnack("New project successfully added 🎉");
+          break;
+        case "update":
+          dispatch({ type: "edit", project: { id: formData.id, data: formData } });
+          addSnack("New project successfully updated 👍");
+          break;
+      }
+      router.push("/projects");
     }
-    router.push("/projects");
   };
 
   return (
-    <Grid container rowSpacing={3} columnSpacing={6} sx={{mb: 8}}>
+    <Grid container rowSpacing={3} columnSpacing={6} sx={{ mb: 8 }}>
       <FormRow id="id" name="Project ID" setFormData={setFormData} formData={formData} disabled={formType === "update"} />
       <FormRow id="name" name="Project Name" setFormData={setFormData} formData={formData} />
       <FormRow id="desc" name="Description" rows={5} setFormData={setFormData} formData={formData} />

@@ -39,6 +39,7 @@ export default function FormRow({
       <StyledHeadingGrid size={leftColumn}><strong>{name}</strong>:</StyledHeadingGrid>
       <Grid size={rightColumn}>
         <TextField
+          required={type === "date" ? false : true}
           inputRef={type === "date" ? inputRef : null}
           fullWidth
           disabled={disabled}
