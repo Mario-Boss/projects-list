@@ -2,35 +2,58 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, install all dependencies:
+
+```bash
+npm run install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses:
+- Tailwind and PostCSS in layouts files only to demonstrate skills.
+- Eslint to check the code
 
-## Learn More
+```bash
+npm run lint
+```
+- Jest and Testing Library to run tests - please use command:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run test # to run tests
+# or
+npm run test:watch # to run and watch tests for changes
+```
+- Express.js node framework to demonstrate how to run API server - to use data from Express server please change env constant in `next.config.mjs` file to `express` like that (default value is `local`):
+```
+const nextConfig = {
+    env: {
+        dataSource: 'exprees',
+        expressAPIsource: "http://localhost:3003/api"
+    }
+};
+```
+    and run command:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run server
+```
+Open [http://localhost:3003](http://localhost:3003) with your browser to see the running server.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+There are 5 endpoints:
+- GET [http://localhost:3003](http://localhost:3003) - server welcome page
+- GET [http://localhost:3003/api/projects](http://localhost:3003/api/projects) - fetching all projects from local file
+- GET [http://localhost:3003/api/projects/project_a](http://localhost:3003/api/projects/project_a) - fetching specific project based on project ID, eg: "project_a", "project_b", etc.
+- POST `http://localhost:3003/api/projects/new` - endpoint to demonstrate how to add a new project based on the body payload - can be tested with tool like Postman
+- POST `http://localhost:3003/api/projects/project_a/edit` - endpoint to demonstrate how to edit an existing project with the body payload - can be tested with tool like Postman
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+As a next step for this project I wanted to do some nice features but lack of time stopped me:
+- implement Prisma functionality with LiteSQL database to keep data
+- install and configure Formik and validation schema for the form to make a smooth validation for forms
