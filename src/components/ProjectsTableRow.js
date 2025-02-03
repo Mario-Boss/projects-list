@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import { Button, TableCell, TableRow } from "@mui/material";
-import FavoriteButton from "@/components/FavoriteButton";
+import FavoriteButton from "@/components/favorite/FavoriteButton";
 
 const StyledLink = styled(Link)(() => ({
   "& span:hover": {

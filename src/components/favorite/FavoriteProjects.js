@@ -3,7 +3,7 @@
 import { useProject } from "@/providers/project";
 import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
-import FavoriteProjectItem from "@/components/FavoriteProjectItem";
+import FavoriteProjectItem from "@/components/favorite/FavoriteProjectItem";
 
 const StyledList = styled(List)(() => ({
   marginTop: "20px"

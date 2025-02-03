@@ -3,7 +3,7 @@
 import { styled } from "@mui/material/styles";
 import { Skeleton, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import FavoriteButton from "@/components/FavoriteButton";
+import FavoriteButton from "@/components/favorite/FavoriteButton";
 
 const StyledHeadingGrid = styled(Grid)(({theme}) => ({
   alignItems: "flex-start",

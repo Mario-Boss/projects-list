@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelectedLayoutSegments } from "next/navigation";
-import FavoriteProjects from "@/components/FavoriteProjects";
+import FavoriteProjects from "@/components/favorite/FavoriteProjects";
 import PageTitle from "@/components/PageTitle";
 
 export default function ProjectsLayout({ children }) {
