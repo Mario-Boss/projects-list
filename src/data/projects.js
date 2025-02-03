@@ -56,7 +56,10 @@ const projects = [
   }
 ];
 
-const getProjects = new Promise(resolve => {
+const getProjects = new Promise((resolve, reject) => {
+  const randomNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+  if(randomNumber === 5) reject({error: "Random API error occured to demonstrate the error handling in the app"});
+
   switch(process.env.dataSource) {
     case "local":
       resolve(projects);
