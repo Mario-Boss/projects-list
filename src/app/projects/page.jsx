@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectsTable from "@/components/ProjectsTable";
+import ProjectsTable from "@/components/projects/ProjectsTable";
 
 export default function Projects() {
   return <ProjectsTable />;
