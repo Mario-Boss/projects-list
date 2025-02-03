@@ -19,7 +19,7 @@ export default function ViewProject() {
       await setProjectData(state.projects.find(project => project.id === params.projectId));
     }
     wait();
-  }, []);
+  }, [params.projectId, state.projects]);
 
   return (
     <Box sx={{ flexGrow: 1, pt: 8 }}>
