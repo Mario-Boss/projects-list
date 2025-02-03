@@ -1,8 +1,9 @@
+const projectDescriptionSource = process.env.dataSource === "local" ? "" : "EXPRESS.js - ";
 const projects = [
   {
     id: "project_a",
     name: "Project A",
-    desc: "Project A Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: `Project A Description: ${projectDescriptionSource} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     start: "2025-01-01",
     end: "2025-12-31",
     manager: "John Doe",
@@ -11,7 +12,7 @@ const projects = [
   {
     id: "project_b",
     name: "Project B",
-    desc: "Project B Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: `Project B Description: ${projectDescriptionSource} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     start: "2025-01-01",
     end: "2025-12-31",
     manager: "John Doe",
@@ -20,7 +21,7 @@ const projects = [
   {
     id: "project_c",
     name: "Project C",
-    desc: "Project C Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: `Project C Description: ${projectDescriptionSource} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     start: "2025-01-01",
     end: "2025-12-31",
     manager: "John Doe",
@@ -29,7 +30,7 @@ const projects = [
   {
     id: "project_e",
     name: "Project E",
-    desc: "Project E Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: `Project E Description: ${projectDescriptionSource} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     start: "2025-01-01",
     end: "2025-12-31",
     manager: "John Doe",
@@ -38,7 +39,7 @@ const projects = [
   {
     id: "project_f",
     name: "Project F",
-    desc: "Project F Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: `Project F Description: ${projectDescriptionSource} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     start: "2025-01-01",
     end: "2025-12-31",
     manager: "John Doe",
@@ -47,7 +48,7 @@ const projects = [
   {
     id: "project_g",
     name: "Project G",
-    desc: "Project G Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: `Project G Description: ${projectDescriptionSource} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     start: "2025-01-01",
     end: "2025-12-31",
     manager: "John Doe",
@@ -55,6 +56,19 @@ const projects = [
   }
 ];
 
-export const getProjects = new Promise(resolve => {
-  resolve(projects);
+const getProjects = new Promise(resolve => {
+  switch(process.env.dataSource) {
+    case "local":
+      resolve(projects);
+      break;
+    case "express":
+      const expressData = fetch(process.env.expressAPIsource + "/projects").then(data => data.json());
+      resolve(expressData);
+      break;
+  }
 });
+
+module.exports = {
+  getProjects,
+  projects
+}
