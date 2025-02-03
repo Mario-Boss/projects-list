@@ -14,7 +14,7 @@ const StyledHeadingGrid = styled(Grid)(({theme}) => ({
   }
 }));
 
-export default function FormRow({ data, name = "", showFavoriteButton = false, favoriteStatus, leftColumn = { xs: 12, lg: 4, xl: 3 }, rightColumn = { xs: 12, lg: 8, xl: 9 } }) {
+export default function FormRow({ data, name = "", showFavoriteButton = false, leftColumn = { xs: 12, lg: 4, xl: 3 }, rightColumn = { xs: 12, lg: 8, xl: 9 } }) {
   return (
     <>
       {!showFavoriteButton && (<StyledHeadingGrid size={leftColumn}><strong>{name}</strong>:</StyledHeadingGrid>)}
@@ -23,7 +23,7 @@ export default function FormRow({ data, name = "", showFavoriteButton = false, f
       </StyledHeadingGrid>)}
       {showFavoriteButton && (
         <StyledHeadingGrid size={{ xs: 12 }} sx={{ justifyContent: "flex-start" }}>
-          {favoriteStatus ? <FavoriteButton projectId={data} /> : <Skeleton variant="circular" width={60} height={60} />}
+          {data ? <FavoriteButton projectId={data} /> : <Skeleton variant="circular" width={60} height={60} />}
         </StyledHeadingGrid>
       )}
     </>

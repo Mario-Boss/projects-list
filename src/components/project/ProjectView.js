@@ -46,7 +46,7 @@ export default function ProjectView({ projectData }) {
         </Grid>
       </Grid>
       <Grid size={{ xs: 2, lg: 4, xl: 3 }}>
-        <ProjectViewRow data={projectData?.id} showFavoriteButton={true} favoriteStatus={projectData?.favorite} />
+        <ProjectViewRow data={projectData?.id} showFavoriteButton={true} />
       </Grid>
     </Grid>
   );
