@@ -11,7 +11,7 @@ export default function FavoriteButton({ projectId }) {
   const {favorite} = state.projects.find(project => project.id === projectId);
 
   const onFavoriteHandle = () => {
-    favorite ? dispatch({ type: "unlike", projectId }) : dispatch({ type: "like", projectId });
+    dispatch({ type: "switchFavorite", projectId });
     addSnack(`The project successfully ${favorite ? "removed from favorites 😮" : "added to favorites 😀"}`, favorite ? "info" : "success");
   };
 
