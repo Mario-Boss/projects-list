@@ -15,3 +15,7 @@ const config = {
 };
 
 module.exports = createJestConfig(config);
+
+process.env = Object.assign(process.env, {
+  dataSource: 'local'
+});
